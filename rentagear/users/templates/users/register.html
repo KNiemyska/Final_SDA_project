@@ -1,0 +1,24 @@
+{%extends "appcat/base.html"%}
+{%load crispy_forms_tags%}
+{%block title%}Register{%endblock%}
+{%block body%}
+    <div>
+        <form method="POST">
+            {%csrf_token%}
+            <fieldset>
+                <legend> Join Today</legend>
+                {{form| crispy}}
+            </fieldset>
+            <div>
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div>
+            <small>
+                Have an account? <a href="{%url 'login'%}">Login</a>
+
+            </small>
+        </div>
+    </div>
+
+{%endblock%}

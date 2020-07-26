@@ -1,0 +1,38 @@
+{#{% load static %}#}
+{#<link rel="stylesheet" href=static/appcat/main.css>#}
+<div class="bgelement"></div>
+<header class="site-header">
+  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="/">Django Blog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggle">
+        <div class="navbar-nav mr-auto">
+          <a class="nav-item nav-link" href="/">Home</a>
+          <a class="nav-item nav-link" href="/about">About</a>
+        </div>
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav">
+            <a class="register_sign" href="{% url 'register' %}">Register </a>
+            <a class="login_sign" href="{% url 'login' %}">Login </a>
+            <h1 > coś tam coś</h1>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+{% if user.is_authenticated %}
+    Witaj {{ user.username }},
+    <div class="header-wrapper">
+        <a href="{% url 'logout' %}">Logout</a>
+        <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+    </div>
+{% endif %}
+
+
+
+
+
+

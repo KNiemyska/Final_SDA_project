@@ -1,0 +1,12 @@
+{% extends 'appcat/base.html' %}
+
+{% block body %}
+
+    <div class="container">
+        {%for post in posty_na_bloga%}
+            <h1> {{ post.title }}</h1>
+            <p> By {{ post.author }} on {{ post.date_posted }}</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}
