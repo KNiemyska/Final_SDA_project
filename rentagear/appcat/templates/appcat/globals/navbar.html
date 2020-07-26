@@ -10,23 +10,20 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarToggle">
         <div class="navbar-nav mr-auto">
-          <a class="nav-item nav-link" href="/">Home</a>
-          <a class="nav-item nav-link" href="/about">About</a>
-        </div>
-        <!-- Navbar Right Side -->
-        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/">Home</a>
+            <a class="nav-item nav-link" href="/about">About</a>
+
             <a class="register_sign" href="{% url 'register' %}">Register </a>
             <a class="login_sign" href="{% url 'login' %}">Login </a>
-            <h1 > coś tam coś</h1>
         </div>
       </div>
     </div>
   </nav>
 </header>
 {% if user.is_authenticated %}
-    Witaj {{ user.username }},
+    <h1> Witaj {{ user.username }} </h1>
     <div class="header-wrapper">
-        <a href="{% url 'logout' %}">Logout</a>
+        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
         <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
     </div>
 {% endif %}

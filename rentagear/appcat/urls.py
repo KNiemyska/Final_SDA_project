@@ -11,7 +11,7 @@ from . import views
 
 urlpatterns = [
     # path('', MainView.as_view(), name='appcat-home'),
-    path('', home, name='appcat-home'),
+    path('', home, name='home'),
     path('about/',about, name='appcat-about'),
     path('register/', user_views.register, name='register'),
     path('profile/', user_views.profile, name='profile'),

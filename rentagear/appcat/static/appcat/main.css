@@ -1,10 +1,20 @@
-.login_sign, .register_sign{
-    color: chartreuse;
-    float: initial;
-    padding-right: inherit;
-    margin-right: 20px;
-    min-height: 64px;
+
+.login_sign, .register_sign {
+  color: greenyellow;
+margin: 7px;
 }
+
+.register_sign:hover, .login_sign:hover {
+  color: #ffffff;
+}
+
+.register_sign:active, .login_sign:active{
+  font-weight: 500;
+}
+
+
+
+
 .header-wrapper {
     width: 100%;
     background: #fff;
