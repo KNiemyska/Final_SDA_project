@@ -13,7 +13,14 @@ margin: 7px;
 }
 
 
-
+.img-gear{
+    height: auto;
+    width:auto;
+    border-radius: 8px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .header-wrapper {
     width: 100%;

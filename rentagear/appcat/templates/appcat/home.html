@@ -3,9 +3,21 @@
 {% block body %}
 
     <div class="container">
-        {%for post in posty_na_bloga%}
-            <h1> {{ post.title }}</h1>
-            <p> By {{ post.author }} on {{ post.date_posted }}</p>
+        {%for gear in gears%}
+
+            <article class="media content-section">
+            <img class="img-gear" src="{{ gear.picture.url }}">
+              <div class="media-body">
+
+                <div class="article-metadata">
+
+                  <a class="mr-2" href="#">{{ gear.author }}</a>
+                  <small class="text-muted">{{ gear.date_posted |date:"Y-F-d"}}</small>
+                </div>
+                <h2><a class="article-title" href="#">{{ gear.title }}</a></h2>
+                <p class="article-content">{{ gear.content }}</p>
+              </div>
+            </article>
         {% endfor %}
     </div>
 

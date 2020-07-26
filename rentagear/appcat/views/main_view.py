@@ -1,38 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
-
-from appcat.models import Gear
-
-posty_na_bloga = [
-    {'author': "Kasia",
-     "title": "blog1",
-     "content": "treść bloga 1",
-     'date_posted': 'data posta'
-     },
-    {'author': "Tomek",
-     "title": "blog2",
-     "content": "treść bloga 2",
-     'date_posted': "data posta 2"
-     }
-
-]
+from appcat.models import Gear, Post
 
 class MainView(View):
     template = 'appcat/home.html'
-    posty_na_bloga = [
-            {'author': "Kasia",
-             "title": "blog1",
-             "content": "treść bloga 1",
-             'date_posted': 'data posta'
-             },
-            {'author': "Tomek",
-             "title": "blog2",
-             "content": "treść bloga 2",
-             'date_posted': "data posta 2"
-             }
 
-        ]
     def get(self, request):
         return render(request, self.template)
 
@@ -44,7 +17,8 @@ class MainView(View):
 
 def home(request):
     context = {
-        'posty_na_bloga': posty_na_bloga
+
+        "gears": Gear.objects.all()
     }
     return render(request, 'appcat/home.html', context)
 
