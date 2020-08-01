@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from appcat.models import Gear, Post
 
 class MainView(View):
@@ -33,8 +33,15 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model= Gear
 
-# will look automaticly for such template <app>/<model>_<viewtype>.html, this is why we donr need to specify this
+# will look automaticly for such template <app>/<model>_<viewtype>.html, this is why we dont need to specify this
 
+class PostCreateView(CreateView): #to create new post
+    model= Gear
+    fields=['title','picture','content']
+
+    def form_valid(self,form): #the author of post will be logged person
+        form.instance.author=self.request.user
+        return super().form_valid(form)
 
 def about(request):
 
