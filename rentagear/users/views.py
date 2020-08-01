@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
-
-from .forms import UserRegisterForm, ContactForm
+from django.contrib.auth.decorators import login_required
+from .forms import UserRegisterForm, ContactForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
@@ -17,9 +17,26 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
-
+@login_required
 def profile(request):
-    return render(request,'users/profile.html')
+    if request.method == 'POST':
+        u_form=UserUpdateForm(request.POST, instance=request.user) #instance add to have already field information
+        p_form=ProfileUpdateForm(request.POST,
+                                 request.FILES,
+                                 instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            username = u_form.cleaned_data.get('username')
+            messages.success(request, f'{username} Your account has been updated !')
+            return redirect('profile')
+    else:
+        u_form=UserUpdateForm(instance=request.user) #instance add to have already field information
+        p_form=ProfileUpdateForm(instance=request.user.profile)
+
+    context={'u_form':u_form,
+             'p_form':p_form}
+    return render(request,'users/profile.html',context)
 
 
 def contact(request):

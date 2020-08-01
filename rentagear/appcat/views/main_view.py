@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import ListView
 from appcat.models import Gear, Post
 
 class MainView(View):
@@ -22,6 +23,12 @@ def home(request):
     }
     return render(request, 'appcat/home.html', context)
 
+class PostListView(ListView):
+    model= Gear
+    template_name = 'appcat/home.html'
+    context_object_name = 'gears'
+    ordering = ['-date_posted'] #to order view of posts
+# <app>/<model>_<viewtype>.html
 def about(request):
 
     return render(request,'appcat/about.html', {"title":"TYTUŁ Z ABOUT"})

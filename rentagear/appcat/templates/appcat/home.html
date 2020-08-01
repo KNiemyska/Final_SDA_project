@@ -3,10 +3,17 @@
 {% block body %}
 
     <div class="container">
+{#    Jak dodać zdjęcie osoby tworzącej post? tzn dodającej sprzęt?#}
+{#        {%for post in posts%}#}
+{#            <img class=" rounded-circle article-img" src="{{post.author.profile.image.url}}">#}
+{#        {% endfor %}#}
         {%for gear in gears%}
 
+
             <article class="media content-section">
+
             <img class="img-gear" src="{{ gear.picture.url }}">
+            <img class="rounded-circle account-img mg-fluid" src="{{ gear.author.profile.image.url}}">
               <div class="media-body">
 
                 <div class="article-metadata">
@@ -18,6 +25,7 @@
                 <p class="article-content">{{ gear.content }}</p>
               </div>
             </article>
+
         {% endfor %}
     </div>
 

@@ -10,7 +10,21 @@
           <p class="text-secondary">{{ user.email }}</p>
         </div>
       </div>
-      <!-- FORM HERE -->
+
+    <form method="POST" enctype="multipart/form-data">
+    {# multipart/form-data - to save images, without this it will looks like it is working, but it won't save images #}
+
+        {%csrf_token%}
+        <fieldset>
+            <legend> Profile Info</legend>
+            {{u_form| crispy}}
+            {{p_form| crispy}}
+        </fieldset>
+        <div>
+            <button type="submit">Update</button>
+        </div>
+    </form>
     </div>
+
 
 {%endblock body%}
