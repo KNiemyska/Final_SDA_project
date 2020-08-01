@@ -3,7 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from appcat.views import MainView
-from appcat.views.main_view import about,home, PostListView
+from appcat.views.main_view import about,home, PostListView, PostDetailView
 from users import views as user_views
 from django.urls import path
 from . import views
@@ -12,6 +12,7 @@ from . import views
 urlpatterns = [
     # path('', MainView.as_view(), name='appcat-home'),
     path('', PostListView.as_view(), name='home'),
+    path('gear/<int:pk>/', PostDetailView.as_view(), name='gear-detail'),
     path('about/',about, name='appcat-about'),
     path('register/', user_views.register, name='register'),
     path('profile/', user_views.profile, name='profile'),

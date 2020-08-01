@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from appcat.models import Gear, Post
 
 class MainView(View):
@@ -29,6 +29,13 @@ class PostListView(ListView):
     context_object_name = 'gears'
     ordering = ['-date_posted'] #to order view of posts
 # <app>/<model>_<viewtype>.html
+
+class PostDetailView(DetailView):
+    model= Gear
+
+# will look automaticly for such template <app>/<model>_<viewtype>.html, this is why we donr need to specify this
+
+
 def about(request):
 
     return render(request,'appcat/about.html', {"title":"TYTUŁ Z ABOUT"})
