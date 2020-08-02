@@ -1,0 +1,19 @@
+{%extends "appcat/base.html"%}
+
+{%block title%}Delete Gear{%endblock%}
+{%block body%}
+    <div>
+        <form method="POST">
+
+            {%csrf_token%}
+            <fieldset>
+                <legend> Delete Posted Gear</legend>
+                <h2>Are you sure you want to delete a gear "{{ object.title }}</h2>
+            </fieldset>
+            <div>
+                <button class="btn btn-outline-danger" type="submit">Yes, Delete Gear</button>
+                <a  class="btn btn-outline-secondary" href="{% url 'gear-detail' object.id %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+{%endblock%}

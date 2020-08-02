@@ -3,6 +3,9 @@ from django.utils import timezone
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
+
+
 class Post(models.Model):
     title=models.CharField(max_length=100)
     content=models.TextField(blank=True, null=True)
@@ -27,6 +30,14 @@ class Gear(models.Model):
     # gear_status=models.ForeignKey(GearStatus, models.SET_NULL)
     def __str__(self):
         return self.title
+    #redirect will redirect to a specific route
+    #reverse will return full url to that route as a string
+    #in this case we want to return url as a string and let the view handle redirect for us:
+    #first import reverse function
+    def get_absolute_url(self): #django has to know how to find absolut location of gear -> we want django to redirect to gear detail_form
+        return reverse('gear-detail',kwargs={'pk':self.pk})
+
+
 class GearStatus(models.Model):
     id=models.UUIDField(primary_key=True,default=uuid.uuid4)
     gs_name=models.CharField(max_length=20)

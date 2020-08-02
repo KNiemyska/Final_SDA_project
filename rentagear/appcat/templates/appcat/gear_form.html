@@ -1,0 +1,18 @@
+{%extends "appcat/base.html"%}
+{%load crispy_forms_tags%}
+{%block title%}Add Gear{%endblock%}
+{%block body%}
+    <div>
+        <form method="POST" enctype="multipart/form-data">
+
+            {%csrf_token%}
+            <fieldset>
+                <legend> Gear Post</legend>
+                {{form| crispy}}
+            </fieldset>
+            <div>
+                <button type="submit">Post Gear</button>
+            </div>
+        </form>
+    </div>
+{%endblock%}

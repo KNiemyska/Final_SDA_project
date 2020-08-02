@@ -12,18 +12,22 @@
 
             <article class="media content-section">
 
-            <img class="img-gear" src="{{ gear.picture.url }}">
-            <img class="rounded-circle account-img mg-fluid" src="{{ gear.author.profile.image.url}}">
-              <div class="media-body">
+                <img class="img-gear" src="{{ gear.picture.url }}">
 
-                <div class="article-metadata">
+                <ol>
+                    <h2><a class="article-title" href="{% url 'gear-detail' gear.id %}">{{ gear.title }}</a></h2>
+                    <p class="article-title">Year of production: {{ gear.year_of_production}}</p>
+                    <p class="article-content">{{ gear.content }}</p>
+                </ol>
+                <div class="media-body">
 
-                  <a class="mr-2" href="#">{{ gear.author }}</a>
-                  <small class="text-muted">{{ gear.date_posted |date:"Y-F-d"}}</small>
+                    <div class="article-metadata">
+                      <a class="mr-2" href="#">{{ gear.author }}</a>
+                        <img small class="rounded-circle account-img mg-fluid" src="{{ gear.author.profile.image.url}}">
+                      <small class="text-muted">{{ gear.date_posted |date:"Y-F-d"}}</small>
+                    </div>
+
                 </div>
-                <h2><a class="article-title" href="{% url 'gear-detail' gear.id %}">{{ gear.title }}</a></h2>
-                <p class="article-content">{{ gear.content }}</p>
-              </div>
             </article>
 
         {% endfor %}
