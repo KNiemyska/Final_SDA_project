@@ -5,6 +5,16 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
+#LIST COMPRAHENSION NA TUPLI DAJE GENERATOR
+
+#tupla - first element goes to database, second is what is displayed
+CATEGORY_CHOICES=(
+    ("TUR","Turystyka"),
+    ("CLIMB","Wspinanie"),
+    ("VFERR","Via Ferraty"),
+    ("SKI ","Skituring")
+)
+
 
 class Post(models.Model):
     title=models.CharField(max_length=100)
@@ -21,6 +31,7 @@ class Gear(models.Model):
     id=models.UUIDField(primary_key=True,default=uuid.uuid4)
     title=models.CharField(max_length=250, blank=False, null=False)
     year_of_production=models.CharField(max_length=4)
+    category=models.CharField(choices=CATEGORY_CHOICES, max_length=6, default='DEFAULT_VALUE')
     content = models.TextField(blank=True, null=True)
     author = models.ForeignKey(User, null=True,on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default=timezone.now)
@@ -52,17 +63,17 @@ class GearCopy(models.Model):
 #     def __str__(self):
 #         return self.title
 #
-# class OrderItem(models.Model):
-#     item=models.ForeignKey(Item, on_delete=models.CASCADE)
-#     def __str__(self):
-#         return self.title
-#
-# class Order(models.Model):
-#     user=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-#     items=models.ManyToManyRel(OrderItem)
-#     start_date=models.DateTimeField(auto_now_add=True)
-#     ordered_date=models.DateTimeField()
-#     ordered= models.BooleanField(default=False)
-#     def __str__(self):
-#         return self.title
+class OrderGear(models.Model):
+    item=models.ForeignKey(Gear, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.title
+
+class Order(models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    items=models.ManyToManyField(OrderGear)
+    start_date=models.DateTimeField(auto_now_add=True)
+    ordered_date=models.DateTimeField()
+    ordered= models.BooleanField(default=False)
+    def __str__(self):
+        return self.title
 

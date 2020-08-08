@@ -11,16 +11,14 @@ margin: 7px;
 .register_sign:active, .login_sign:active{
   font-weight: 500;
 }
+.img-gear {
 
+    height: 50px;
+    width: 50px;
+    max-height: 50px;
+    max-width: 50px;
+   }
 
-.img-gear{
-    height: auto;
-    width:auto;
-    border-radius: 8px;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .header-wrapper {
     width: 100%;
@@ -126,4 +124,20 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+.media-body-my{
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+.square {
+    height: 75px;
+    width: 75px;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+
 }

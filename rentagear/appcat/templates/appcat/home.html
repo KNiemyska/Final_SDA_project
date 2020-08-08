@@ -1,36 +1,22 @@
 {% extends 'appcat/base.html' %}
-
 {% block body %}
-
-    <div class="container">
 {#    Jak dodać zdjęcie osoby tworzącej post? tzn dodającej sprzęt?#}
 {#        {%for post in posts%}#}
 {#            <img class=" rounded-circle article-img" src="{{post.author.profile.image.url}}">#}
 {#        {% endfor %}#}
         {%for gear in gears%}
-
-
             <article class="media content-section">
-
-                <img class="img-gear" src="{{ gear.picture.url }}">
-
-                <ol>
-                    <h2><a class="article-title" href="{% url 'gear-detail' gear.id %}">{{ gear.title }}</a></h2>
-                    <p class="article-title">Year of production: {{ gear.year_of_production}}</p>
-                    <p class="article-content">{{ gear.content }}</p>
-                </ol>
-                <div class="media-body">
-
+                <img small class="rounded-circle article-img" src="{{ gear.author.profile.image.url}}">
+                <div class="media-body" >
                     <div class="article-metadata">
                       <a class="mr-2" href="#">{{ gear.author }}</a>
-                        <img small class="rounded-circle account-img mg-fluid" src="{{ gear.author.profile.image.url}}">
                       <small class="text-muted">{{ gear.date_posted |date:"Y-F-d"}}</small>
                     </div>
-
+                <h2><a class="article-title" href="{% url 'gear-detail' gear.id %}">{{ gear.title }}</a></h2>
+                <img style='height: 100%; width: 100%; object-fit: contain'src="{{ gear.picture.url }}">
+                <p class="article-title">Year of production: {{ gear.year_of_production}}</p>
+                <p class="article-content">{{ gear.content }}</p>
                 </div>
             </article>
-
         {% endfor %}
-    </div>
-
 {% endblock %}
