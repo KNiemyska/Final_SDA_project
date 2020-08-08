@@ -7,22 +7,22 @@ The idea was to build some basic bloggin platform. In future this blog will be t
 It was made using Python 3.8, Django and SQLite Database. For styling was used Bootstrap.
 There is a Home page with Posts from all users. 
 
-User can register and login. After login user can:
+User can register and login. After login user:
 
-* has acess to profil page, where he can change username, email and change default profil image
-* create post with describe of adding gear and add picture of a gear
-* can delete or update their gear post
+* has access to profile page, where he can change username, email and change default profile image,
+* can create post with describe of adding gear and add picture of a gear,
+* can delete or update their gear post.
 
 Every added gear has a detail page. 
 
 
 Future assumptions:
-* unittests
-* equipment rental
-* equipment can be booked
-* access to the location of the equipment (to the user who has currently rented the equipment - his contact details)
-* page paginattion
-* contact page
+* unittests,
+* equipment rental,
+* equipment can be booked,
+* access to the location of the equipment (to the user who has currently rented the equipment - his contact details),
+* page paginattion,
+* contact page.
 
 How to run
 
