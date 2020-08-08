@@ -1,4 +1,4 @@
-# Finall_SDA_project
+# Final_SDA_project
 Django Blog
 
 About
