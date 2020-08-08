@@ -13,10 +13,9 @@ margin: 7px;
 }
 .img-gear {
 
-    height: 50px;
-    width: 50px;
-    max-height: 50px;
-    max-width: 50px;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
    }
 
 

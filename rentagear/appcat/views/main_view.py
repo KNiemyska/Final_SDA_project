@@ -6,25 +6,25 @@ from appcat.models import Gear, Post
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
-class MainView(View):
-    template = 'appcat/home.html'
-
-    def get(self, request):
-        return render(request, self.template)
-
-    def post(self, request):
-        context = {
-            'posty_na_bloga': self.posty_na_bloga
-        }
-        return render(request, self.template, context)
-
-
-def home(request):
-    context = {
-
-        "gears": Gear.objects.all()
-    }
-    return render(request, 'appcat/home.html', context)
+# class MainView(View):
+#     template = 'appcat/home.html'
+#
+#     def get(self, request):
+#         return render(request, self.template)
+#
+#     def post(self, request):
+#         context = {
+#             'posty_na_bloga': self.posty_na_bloga
+#         }
+#         return render(request, self.template, context)
+#
+#
+# def home(request):
+#     context = {
+#
+#         "gears": Gear.objects.all()
+#     }
+#     return render(request, 'appcat/home.html', context)
 
 
 class PostListView(ListView):
